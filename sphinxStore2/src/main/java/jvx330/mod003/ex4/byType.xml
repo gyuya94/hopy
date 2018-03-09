@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean name="byTypeClient" class="jvx330.mod003.ex4.ByTypeClient"
+	autowire="byType">
+	<!-- autowire? -->
+	
+	
+<!-- 이제 service객체를 이런식으로 갖게할수있겠네요 -->
+	<!-- 다른 방식으로 해봅시당
+		<property name="namingService" ref="dnsNamingService"/>
+	 -->
+</bean>
+
+<bean name="dnsNamingService" class="jvx330.mod003.ex4.DnsNamingService"/>
+
+</beans>

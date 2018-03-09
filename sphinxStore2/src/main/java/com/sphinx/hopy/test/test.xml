@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:component-scan base-package="com.sphinx.hopy.test" />
+
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="org.apache.derby.jdbc.ClientDriver" />
+		<property name="url" value="jdbc:derby://localhost:1527/Sphinx_Derby" />
+		<property name="username" value="sphinxStore" />
+		<property name="password" value="sphinxStore" />
+	</bean>	
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+
+	<bean id="productDao" class="com.sphinx.hopy.product.dao.impl.ProductDaoImpl">
+	</bean>
+	<bean id="productService" class="com.sphinx.hopy.product.service.impl.ProductServiceImpl">
+	</bean>
+	
+		<bean id="optionService" class="com.sphinx.hopy.product.service.impl.OptionServiceImpl">
+	</bean>
+	<bean id="optionDao" class="com.sphinx.hopy.product.dao.impl.OptionDaoImpl">
+	</bean>
+	
+	<bean id="categoryService" class="com.sphinx.hopy.category.service.impl.CategoryServiceImpl">
+	</bean>
+	<bean id="categoryDao" class="com.sphinx.hopy.category.dao.impl.CategoryDaoImpl">
+	</bean>
+	
+	<bean id="idGeneratorService" class="com.sphinx.hopy.util.idGenerator.service.impl.IdGeneratorServiceImpl"></bean>
+	<bean id="idGeneratorDao" class="com.sphinx.hopy.util.idGenerator.dao.impl.IdGeneratorDaoImpl"></bean>
+	<bean id="idGenerator" class="com.sphinx.hopy.util.idGenerator.IdGenerator"></bean>
+
+</beans>

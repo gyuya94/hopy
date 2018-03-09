@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:component-scan base-package="com.sphinx.hopy" />
+
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="org.apache.derby.jdbc.ClientDriver" />
+		<property name="url" value="jdbc:derby://localhost:1527/Sphinx_Derby" />
+		<property name="username" value="sphinxStore" />
+		<property name="password" value="sphinxStore" />
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- MultipartResolver -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="100000000" />
+		<property name="maxInMemorySize" value="100000000" />
+	</bean>
+
+	<bean name="categoryService"
+		class="com.sphinx.hopy.category.service.impl.CategoryServiceImpl"
+		init-method="init"><!-- 카테고리 서비스 실행할 때 같이 실행되는 메소드 -->
+	</bean>
+
+	<bean name="productService"
+		class="com.sphinx.hopy.product.service.impl.ProductServiceImpl"
+		init-method="init"><!-- 같이 실행되는 메소드 -->
+	</bean>
+
+	<bean name="optionService"
+		class="com.sphinx.hopy.product.service.impl.OptionServiceImpl"
+		init-method="init"><!-- 같이 실행되는 메소드 -->
+	</bean>
+
+	<bean name="orderService" class="com.sphinx.hopy.order.service.impl.OrderServiceImpl"
+		init-method="init"><!-- 같이 실행되는 메소드 -->
+	</bean>
+	
+	<bean name="customerService"
+		class="com.sphinx.hopy.customer.service.impl.CustomerServiceImpl"
+		init-method="init"><!-- 같이 실행되는 메소드 -->
+	</bean>
+	
+	<bean name="supplierService"
+		class="com.sphinx.hopy.product.service.impl.SupplierServiceImpl"
+		init-method="init"><!-- 같이 실행되는 메소드 -->
+	</bean>
+
+</beans>

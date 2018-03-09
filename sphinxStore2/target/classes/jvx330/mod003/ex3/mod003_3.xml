@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<bean name="regDate" class="jvx330.mod003.ex2.Date">
+	<constructor-arg index="0" type="int" value="2018"/>
+	<constructor-arg index="1" type="int" value="1"/>
+	<constructor-arg index="2" type="int" value="09"/>
+</bean>
+
+<bean name="addrInfo" class="jvx330.mod003.ex3.AddressInfoList">
+<!-- 이런식으로 set할때 List들을 넣을수도 있어여 -->
+	<property name="addrList">
+		<list>
+			<value>서울</value>
+			<value>부산</value>
+			<value>대구</value>
+		</list>
+	</property>
+	
+	<property name="testMap">
+		<map>
+		<!-- map은 entry안에 key값 써줄거에여 -->
+			<entry>
+				<key>
+					<value>키1</value>
+				</key>
+				<value >값1</value>
+			</entry>
+			<entry>
+				<key>
+					<value>키2</value>
+				</key>
+				<value type="java.lang.Double">100.0</value>
+			</entry>
+		</map>
+	</property>
+	
+	<property name="testSet">
+		<set>
+			<ref bean="regDate"/>
+		</set>
+	</property>
+</bean>
+
+</beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean name="bar" class="jvx330.mod003.ex1.Bar"/>
+
+<bean name="foo" class="jvx330.mod003.ex1.Foo">
+<!-- 매개변수가 있는 생성자 -->
+	<!-- 이미 저기에 속성이 있기때문에 -->
+	<constructor-arg ref="bar"/>
+</bean>
+
+<bean name="foo2" class="jvx330.mod003.ex1.Foo">
+<!-- 이게 set함수랑 같은거라 보면돼 -->
+	<property name="bar" ref="bar"/>
+</bean>
+</beans>
